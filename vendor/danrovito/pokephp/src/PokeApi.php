@@ -2,6 +2,8 @@
 
 namespace PokePHP;
 
+ini_set('max_execution_time', 300); //Para o código não dar time-out.
+
 class PokeApi
 {
     public function __construct()
