@@ -5,13 +5,34 @@ $api = new PokeApi;
 
 $all_poke = array();
 $poke_data = array();
-// $test = "string";
-for ($i = 1; $i< 10; ++$i){
+for ($i = 1; $i < 2; ++$i){
   $api_data = $api->pokemon($i);
   $nth_poke = json_decode($api_data);
   $all_poke[$i] = $nth_poke;
-  $test = $all_poke[$i]->name;
-  echo($test); 
+//  $test = $all_poke[$i]->name;
+//  echo($test); 
+}
+for ($i = 1; $i < 2; ++$i){
+  $condition = $all_poke[$i]->types[0]->slot;
+  if ($condition == 2){
+    $nth_data = [
+      "n_name" => $all_poke[$i]->name,
+      "n_height" => $all_poke[$i]->height,
+      "n_weight" => $all_poke[$i]->weight,
+      "n_type_1" => $all_poke[$i]->types[0]->type->name,
+      "n_type_2" => $all_poke[$i]->types[1]->type->name,
+    ];  
+  }
+  elseif ($condition == 1){
+    $nth_data = [
+      "n_name" => $all_poke[$i]->name,
+      "n_height" => $all_poke[$i]->height,
+      "n_weight" => $all_poke[$i]->weight,
+      "n_type_1" => $all_poke[$i]->types[0]->type->name,
+    ];
+  }
+  $poke_data[$i] = $nth_data;
+  var_dump($poke_data);
 }
 //$first_poke = $api->pokemon('5');
 //$pokemon_data = json_decode($first_poke);
