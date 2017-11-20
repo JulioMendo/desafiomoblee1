@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+
+  <!-- Meta tags -->
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=no">
+  <meta name="author" content="mobLee">
+  <meta name="theme-color" content="#ed1164">
+
+  <!-- CSS -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- Title -->
+  <title>Desafio 1</title>
+
+</head>
+<body>
+<script>
+  function sortFunction(click) {
+    if (click == 1){
+      alert("Clicked N!");
+    }
+    if (click == 2){
+      alert("Clicked H!");
+    }
+    else if (click == 3){
+      alert("Clicked W!");
+    }
+    else if (click == 4){
+      alert("Clicked T!");
+    }
+    else {
+    }
+    click = 0;
+    return false;
+  }
+</script>
+<h1>A tabela Pokémon</h1>
+<table>
+  <tr>
+    <th colspan="2"><a href=# onclick ="return sortFunction(1);">Pokémon</a></th>
+    <th><a href=# onclick ="return sortFunction(2);">Altura</a></th>
+    <th><a href=# onclick ="return sortFunction(3);">Peso</a></th>
+    <th><a href=# onclick ="return sortFunction(4);">Tipo</a></th>
+  </tr>
+  <tr>
+    <!-- A imagem esperada é o sprite do Pokémon, pode ser tanto o chamado front_default quanto o front_female -->
+    <!-- É esperado que o alt da imagem seja o nome do Pokémon -->
+    <td><img alt=""></td>
+    <td><strong>Nome</strong></td>
+    <td><span>12</span> unidade de medida</td>
+    <td><span>320</span> unidade de medida</td>
+    <!-- Dentro de tipo colocar dentro do mesmo TD todos os tipos que o Pokémon pode ter -->
+    <td>Tipo do Pokémon</td>
+  </tr>
+
+</table>
+
+</body>
+
+</html>
