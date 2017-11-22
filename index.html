@@ -16,49 +16,89 @@
   <!-- Title -->
   <title>Desafio 1</title>
 
+  <script>  var pokeArr = [ ]; </script>
+  <script>
+    function aPokemon(sprite, name, height, weight, type){
+      return pArray = [sprite, name, height, weight, type];
+      // this.sprite = sprite;
+      // this.name = name;
+      // this.height = height;
+      // this.weight = weight;
+      // this.type1 = type1;
+      // this.type2 = type2;
+    }
+  </script>
+
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src ="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" language="javascript">
+    $(document).ready(function() {
+      $.getJSON("poke_results.json", function(pokeResults) {
+          for(i = 1; i < 10; i++){
+            var pokeS = pokeResults[i].n_sprite;
+            console.log(pokeS)
+            var pokeName = pokeResults[i].n_name;
+            pokeName = pokeName.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+              return letter.toUpperCase();
+            }) 
+            var pokeH = pokeResults[i].n_height; 
+            var pokeW = pokeResults[i].n_weight;
+            var pokeT = pokeResults[i].n_type;
+            pokeT = pokeT.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+              return letter.toUpperCase();
+            }) 
+            var nthPokemon = aPokemon(
+              pokeS, pokeName, pokeH, pokeW, pokeT
+            )
+            pokeArr[i-1] = nthPokemon;
+            console.log(pokeArr)
+          }
+          console.log(pokeArr);
+      $(document).ready(function() {
+        $('#example').DataTable( {
+            data: pokeArr,
+            columns: [
+                { title: "Sprite" },
+                { title: "Nome" },
+                { title: "Altura" },
+                { title: "Peso" },
+                { title: "Tipo" }
+            ],
+            "order": [[ 1, "desc" ]],
+            columnDefs: [
+              { targets: 0,
+                render: function(data) {
+                  return '<img src="'+data+'">'
+                }
+              },
+              { targets: 2,
+                type: "numeric",
+                render: function(data, type, row) {
+                  if (type == "display"){
+                    return data+'(pés)'
+                  }
+                  return data;
+                }
+              },
+              { targets: 3,
+                type: "numeric",
+                render: function(data, type, row) {
+                  if (type == "display"){
+                    return data+'(libras)'
+                  }
+                  return data;
+                }
+              }   
+            ]
+        } );
+      } );
+        }
+      )      
+    })
+  </script>
 </head>
 <body>
-<script>
-  function sortFunction(click) {
-    if (click == 1){
-      alert("Clicked N!");
-    }
-    if (click == 2){
-      alert("Clicked H!");
-    }
-    else if (click == 3){
-      alert("Clicked W!");
-    }
-    else if (click == 4){
-      alert("Clicked T!");
-    }
-    else {
-    }
-    click = 0;
-    return false;
-  }
-</script>
-<h1>A tabela Pokémon</h1>
-<table>
-  <tr>
-    <th colspan="2"><a href=# onclick ="return sortFunction(1);">Pokémon</a></th>
-    <th><a href=# onclick ="return sortFunction(2);">Altura</a></th>
-    <th><a href=# onclick ="return sortFunction(3);">Peso</a></th>
-    <th><a href=# onclick ="return sortFunction(4);">Tipo</a></th>
-  </tr>
-  <tr>
-    <!-- A imagem esperada é o sprite do Pokémon, pode ser tanto o chamado front_default quanto o front_female -->
-    <!-- É esperado que o alt da imagem seja o nome do Pokémon -->
-    <td><img alt=""></td>
-    <td><strong>Nome</strong></td>
-    <td><span>12</span> unidade de medida</td>
-    <td><span>320</span> unidade de medida</td>
-    <!-- Dentro de tipo colocar dentro do mesmo TD todos os tipos que o Pokémon pode ter -->
-    <td>Tipo do Pokémon</td>
-  </tr>
-
-</table>
-
+  <table id="example" class="display" width="100%"></table>
 </body>
 
 </html>
