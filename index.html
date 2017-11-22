@@ -15,90 +15,114 @@
 
   <!-- Title -->
   <title>Desafio 1</title>
+  
+  <!-- Load external libraries being used -->
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src ="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
+  <!-- Array for the data fed into the table -->
   <script>  var pokeArr = [ ]; </script>
+  
+  <!-- Function to append an array of data, cleaner loops -->
   <script>
-    function aPokemon(sprite, name, height, weight, type){
+    function aPokemon(sprite, name, height, weight, type){          
       return pArray = [sprite, name, height, weight, type];
-      // this.sprite = sprite;
-      // this.name = name;
-      // this.height = height;
-      // this.weight = weight;
-      // this.type1 = type1;
-      // this.type2 = type2;
     }
   </script>
 
-  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-  <script src ="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<!-- Makes two AJAX calls: one from .JSON file, another to make the table -->
   <script type="text/javascript" language="javascript">
     $(document).ready(function() {
       $.getJSON("poke_results.json", function(pokeResults) {
-          for(i = 1; i < 10; i++){
-            var pokeS = pokeResults[i].n_sprite;
-            console.log(pokeS)
-            var pokeName = pokeResults[i].n_name;
-            pokeName = pokeName.toLowerCase().replace(/\b[a-z]/g, function(letter) {
-              return letter.toUpperCase();
-            }) 
-            var pokeH = pokeResults[i].n_height; 
-            var pokeW = pokeResults[i].n_weight;
-            var pokeT = pokeResults[i].n_type;
-            pokeT = pokeT.toLowerCase().replace(/\b[a-z]/g, function(letter) {
-              return letter.toUpperCase();
-            }) 
-            var nthPokemon = aPokemon(
-              pokeS, pokeName, pokeH, pokeW, pokeT
-            )
-            pokeArr[i-1] = nthPokemon;
-            console.log(pokeArr)
-          }
-          console.log(pokeArr);
-      $(document).ready(function() {
-        $('#example').DataTable( {
-            data: pokeArr,
+          
+        for(i = 1; i < 10; i++){                  // Loops over array, making 9 slots
+                                                          // All pokeResults[i].data calls get back from the object notation file
+          var pokeS = pokeResults[i].n_sprite;            // the value to the respective key called.                                    
+
+          var pokeName = pokeResults[i].n_name;
+          pokeName = pokeName.toLowerCase().replace(/\b[a-z]/g, function(letter) {            // Capitalizes every first letter
+            return letter.toUpperCase();
+          } ) 
+
+          var pokeH = pokeResults[i].n_height; 
+          
+          var pokeW = pokeResults[i].n_weight;
+          
+          var pokeT = pokeResults[i].n_type;
+          
+          pokeT = pokeT.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+            return letter.toUpperCase();
+          } ) 
+          
+          var nthPokemon = aPokemon(                        // Calls function, assigns the data to
+            pokeS, pokeName, pokeH, pokeW, pokeT            // (now) array nthPokemon
+          )
+
+          pokeArr[i-1] = nthPokemon;                        // Places nthPokemon array inside of
+                                                            // array pokeArr
+        }
+      
+      $(document).ready(function() {                        // Here we'll make the call to the table
+        $('#example').DataTable( {                          // Using jQuery-based DataTable
+          data: pokeArr,                                    // Assigns where the data is coming from
             columns: [
-                { title: "Sprite" },
-                { title: "Nome" },
-                { title: "Altura" },
-                { title: "Peso" },
-                { title: "Tipo" }
+              
+              { title: "Sprite" },                          // Makes relevant columns
+              { title: "Nome" },
+              { title: "Altura" },
+              { title: "Peso" },
+              { title: "Tipo" }
             ],
-            "order": [[ 1, "desc" ]],
+            
+            "order": [[ 1, "desc" ]],                       // Sets "Nome" column to be the first ordered
+            
             columnDefs: [
-              { targets: 0,
-                render: function(data) {
-                  return '<img src="'+data+'">'
+
+              { targets: 0,                                 // Specific column definitions, for this one
+                render: function(data) {                    // it appends <img src=" "> to the sprite URL
+                  return '<img src="'+data+'">'             // *see also img src asterisk on readme file*
                 }
               },
+
               { targets: 2,
                 type: "numeric",
                 render: function(data, type, row) {
-                  if (type == "display"){
-                    return data+'(pés)'
-                  }
+                
+                  if (type == "display"){                   // This appends to columns Height and Weight
+                    return data+'(pés)'                     // the unit of measure, but only to the displayed
+                  }                                         // data, allowing the raw data to remain sortable
+                  
                   return data;
                 }
               },
+              
               { targets: 3,
                 type: "numeric",
                 render: function(data, type, row) {
+                
                   if (type == "display"){
                     return data+'(libras)'
                   }
+
                   return data;
                 }
-              }   
+              }  
+
             ]
         } );
-      } );
-        }
-      )      
+       } );
+      }
+     )      
     })
   </script>
 </head>
+
+<!-- Body tags -->
 <body>
-  <table id="example" class="display" width="100%"></table>
+
+  <!-- Displays table generated with DataTables -->
+  <table id="example" class="display" width="100%"></table> 
+
 </body>
 
 </html>
