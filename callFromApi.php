@@ -73,5 +73,5 @@ fwrite($fp, json_encode($poke_data));                           // a new request
 fclose($fp);                                                    // this keeps the Pokemon data up-to-date
 
 // END MAKE JSON FILE
-
+echo "Abra o arquivo index.html!"
 ?>
