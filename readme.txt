@@ -1,35 +1,31 @@
-Olá, bem-vindo ao meu leia-me!
-
-Como sabe, estou fazendo esse projeto como parte do processo de seleção da mobLee!
+OlÃ¡, bem-vindo ao meu leia-me!
 
 Como rodar meu projeto: 
 ****----1) Abra o arquivo .php (eu utilizei o servidor XAMPP);
 ****----2) Aguarde a mensagem "Abra o arquivo index.html!"; e
-****----3) Quando aparecer, só abrir o index.html e a tabela estará lá!
+****----3) Quando aparecer, sÃ³ abrir o index.html e a tabela estarÃ¡ lÃ¡!
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Segui as instruções do email e também os comentários do arquivo index.html conforme minha capacidade e minha percepção para alcançar o objetivo principal:
-fazer uma tabela com 9 pokemons, ordenável por suas colunas.
 
-Do código HTML, tenho as seguintes observações a fazer:
-Optei por usar a library do jQuery para fazer handling do código e a library  DataTable, dependente do jQuery, para handling da tabela.
-Não tenho vivência suficiente com HTML para fazer minhas próprias funções para isso, então tive que ignorar a insturção de usar dados dentro de cada
+Do cÃ³digo HTML, tenho as seguintes observaÃ§Ãµes a fazer:
+Optei por usar a library do jQuery para fazer handling do cÃ³digo e a library  DataTable, dependente do jQuery, para handling da tabela.
+NÃ£o tenho vivÃªncia suficiente com HTML para fazer minhas prÃ³prias funÃ§Ãµes para isso, entÃ£o tive que ignorar a insturÃ§Ã£o de usar dados dentro de cada
 <td> para mostrar a tabela. 
-Optei por deixar meus scripts todos escritos no arquivo .html para evitar problemas com chamar o código de um arquivo .js.
-*Sobre as sprites: acredito ser possível adicionar com o comando render, do DataTable, dados tanto da sprite como do nome associado a ela em outra coluna.
-Não o fiz por ter medo de não dar tempo de enviar ainda hoje, na terça.
+Optei por deixar meus scripts todos escritos no arquivo .html para evitar problemas com chamar o cÃ³digo de um arquivo .js.
+*Sobre as sprites: acredito ser possÃ­vel adicionar com o comando render, do DataTable, dados tanto da sprite como do nome associado a ela em outra coluna.
+NÃ£o o fiz por ter medo de nÃ£o dar tempo de enviar ainda hoje, na terÃ§a.
 
-Do código em PHP, tenho as seguintes observações a fazer:
-Não tive problemas para chamar os dados da API que, embora  bastante lenta às vezes, foi bem manejada pelo wrapper indicado no e-mail.
-Porém, se fosse possível, iria preferir ter trabalhado diretamente em JavaScript para chamar e enviar dados orientados a objetos.
-Não consegui chamar o arquivo .php pelo arquivo .html, utilizando um botão ou qualquer outro método. Não sei se foi por falta de experiência com rodar
-servidores PHP integrados com HTML ou se estava realmente fazendo algum erro na chamada AJAX, então optei por rodar a página .php manualmente para poder
+Do cÃ³digo em PHP, tenho as seguintes observaÃ§Ãµes a fazer:
+NÃ£o tive problemas para chamar os dados da API que, embora  bastante lenta Ã s vezes, foi bem manejada pelo wrapper indicado no e-mail.
+PorÃ©m, se fosse possÃ­vel, iria preferir ter trabalhado diretamente em JavaScript para chamar e enviar dados orientados a objetos.
+NÃ£o consegui chamar o arquivo .php pelo arquivo .html, utilizando um botÃ£o ou qualquer outro mÃ©todo. NÃ£o sei se foi por falta de experiÃªncia com rodar
+servidores PHP integrados com HTML ou se estava realmente fazendo algum erro na chamada AJAX, entÃ£o optei por rodar a pÃ¡gina .php manualmente para poder
 entregar dentro do prazo.
 
-Foi uma experiência bem bacana, no geral, pois nunca havia feito um projeto integrando três linguagens que, por mais integrada que suas interações sejam,
-tem diversas peculiaridades nas implementações e na relação uma com as outras. Me ajudou a perceber o escopo em que se pode trabalhar com programação e na
-implementação de desenvolvimento.
+Foi uma experiÃªncia bem bacana, no geral, pois nunca havia feito um projeto integrando trÃªs linguagens que, por mais integrada que suas interaÃ§Ãµes sejam,
+tem diversas peculiaridades nas implementaÃ§Ãµes e na relaÃ§Ã£o uma com as outras. Me ajudou a perceber o escopo em que se pode trabalhar com programaÃ§Ã£o e na
+implementaÃ§Ã£o de desenvolvimento.
 
-Dei o meu melhor priorizando conseguir apresentar o código funcionando, espero ter conseguido mostrar suficientemente minhas habilidades!
+Dei o meu melhor priorizando conseguir apresentar o cÃ³digo funcionando, espero ter conseguido mostrar suficientemente minhas habilidades!
 
-Até a próxima! (quem sabe no desafio 2, não é?)
+AtÃ© a prÃ³xima!
